@@ -1,0 +1,56 @@
+---
+- name: Install Ansible
+  hosts: all
+  become: true  # Tornar-se root para executar as tarefas
+
+  tasks:
+    - name: Update apt cache (Ubuntu/Debian)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
+
+    - name: Install Ansible (Ubuntu/Debian)
+      apt:
+        name: ansible
+        state: present
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
+
+    - name: Update yum cache (Red Hat/CentOS)
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_os_family == 'RedHat'
+
+    - name: Install Ansible (Red Hat/CentOS)
+      yum:
+        name: ansible
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    - name: Install Ansible (Fedora)
+      dnf:
+        name: ansible
+        state: present
+      when: ansible_os_family == 'Fedora'
+
+    - name: Install Ansible (openSUSE)
+      zypper:
+        name: ansible
+        state: present
+      when: ansible_os_family == 'Suse'
+
+    - name: Install Ansible (Amazon Linux)
+      yum:
+        name: ansible
+        state: present
+      when: ansible_os_family == 'Amazon'
+
+    - name: Verify Ansible installation
+      command: ansible --version
+      register: ansible_version
+      changed_when: false
+
+    - name: Display Ansible version
+      debug:
+        msg: "Ansible version is {{ ansible_version.stdout }}"
+
