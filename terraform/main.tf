@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-1"  # região
-  access_key = "AKIA4T72PMKFRADC77VH"
-  secret_key = "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"
+  access_key = "AKIA4T72PMKFX6P6PTWC"
+  secret_key = "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"
 }
 
 
@@ -40,7 +40,7 @@ resource "aws_security_group" "windows_server_2019" {
 resource "aws_instance" "windows_server_2019" {
   ami                    = "ami-0ea6a9ded5194e937"  # ID da imagem do Windows Server 2019
   instance_type          = "t2.micro"  # Tipo da instância
-  key_name               = "terraform_pem"  # Nome da chave SSH
+  key_name               = "terraform_user"  # Nome da chave SSH
   associate_public_ip_address = true  # Associar um IP público à instância
 
   # Especifica o ID do security group criado acima para ser associado à instância
