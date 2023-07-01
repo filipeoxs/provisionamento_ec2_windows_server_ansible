@@ -1,0 +1,23 @@
+- name: Install IIS on Windows Server
+  hosts: win
+  tasks:
+  - name: Install Web Server role
+    win_feature:
+      name: Web-Server
+      state: present
+  - name: Install management tools
+    win_feature:
+      name: Web-Mgmt-Tools
+      state: present
+  - name: Allow HTTP traffic through firewall
+    win_firewall_rule:
+      name: Allow HTTP
+      port: 80
+      protocol: tcp
+      state: present
+  - name: Allow custom ports through firewall
+    win_firewall_rule:
+      name: Allow Custom Ports
+      port: "3358,5986"
+      protocol: tcp
+      state: present
