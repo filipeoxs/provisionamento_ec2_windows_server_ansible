@@ -1,7 +1,7 @@
-[win]
+[windows]
 18.208.156.160
 
-[win:vars]
+[windows:vars]
 ansible_user=administrator
 ansible_password=y)&9!i&L*L=etEmhJ@nBU(9e%T7t=A-O
 ansible_connection=winrm
