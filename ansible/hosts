@@ -1,11 +1,19 @@
+# hosts
 
 [windows]
 3.86.185.221
 
 [windows:vars]
-ansible_user=administrator
-ansible_password=58od72$v&laS$HU2x%$BJo!q7YTCP(&Y
+ansible_user={{ ansible_user }}
+ansible_password={{ ansible_password }}
 ansible_connection=winrm
 ansible_winrm_transport=ntlm
 ansible_winrm_server_cert_validation=ignore
 ansible_port=5985
+
+[linux]
+44.204.235.2
+
+[linux:vars]
+ansible_user={{ ansible_user }}
+ansible_password={{ ansible_password }}
