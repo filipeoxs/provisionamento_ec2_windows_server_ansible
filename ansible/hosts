@@ -11,9 +11,3 @@ ansible_winrm_transport=ntlm
 ansible_winrm_server_cert_validation=ignore
 ansible_port=5985
 
-[linux]
-44.204.235.2
-
-[linux:vars]
-ansible_user={{ ansible_user }}
-ansible_password={{ ansible_password }}
